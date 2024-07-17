@@ -1,13 +1,13 @@
 #include "KMatch.h"
 
 bool rDepthFirstSearch(int _i,
-                       Eigen::MatrixXf &_adj_matrix,
-                       std::vector<float> &_X_label,
-                       std::vector<float> &_Y_label,
-                       std::vector<int> &_Y_match_index,
-                       std::vector<int> &_X_visited,
-                       std::vector<int> &_Y_visited,
-                       std::vector<float> &_minimum_d)
+    Eigen::MatrixXf& _adj_matrix,
+    std::vector<float>& _X_label,
+    std::vector<float>& _Y_label,
+    std::vector<int>& _Y_match_index,
+    std::vector<int>& _X_visited,
+    std::vector<int>& _Y_visited,
+    std::vector<float>& _minimum_d)
 {
     _X_visited[_i] = 1;
 
@@ -24,13 +24,13 @@ bool rDepthFirstSearch(int _i,
 
             if (_Y_match_index[j] == -1 ||
                 rDepthFirstSearch(_Y_match_index[j],
-                                  _adj_matrix,
-                                  _X_label,
-                                  _Y_label,
-                                  _Y_match_index,
-                                  _X_visited,
-                                  _Y_visited,
-                                  _minimum_d))
+                    _adj_matrix,
+                    _X_label,
+                    _Y_label,
+                    _Y_match_index,
+                    _X_visited,
+                    _Y_visited,
+                    _minimum_d))
             {
                 _Y_match_index[j] = _i;
                 return 1;
@@ -51,11 +51,7 @@ std::vector<int> KMatch(Eigen::MatrixXf _adj_matrix, int _type, float _disconnec
     {
         float max_element = _adj_matrix.maxCoeff();
         _adj_matrix *= -1;
-<<<<<<< HEAD
-        if (max_element == _disconnect_value)
-=======
         if (std::abs(max_element - _disconnect_value) < 0.01f)
->>>>>>> 4cf00ca
         {
             _adj_matrix = _adj_matrix.array() + max_element;
         }
@@ -70,10 +66,6 @@ std::vector<int> KMatch(Eigen::MatrixXf _adj_matrix, int _type, float _disconnec
     Eigen::MatrixXf adj_matrix(size, size);
     adj_matrix.fill(-1);
     adj_matrix.block(0, 0, _adj_matrix.rows(), _adj_matrix.cols()) = _adj_matrix;
-<<<<<<< HEAD
-    std::cout << adj_matrix << std::endl;
-=======
->>>>>>> 4cf00ca
 
     std::vector<float> X_label(size, 0.0);
     std::vector<float> Y_label(size, 0.0);
@@ -99,13 +91,13 @@ std::vector<int> KMatch(Eigen::MatrixXf _adj_matrix, int _type, float _disconnec
             std::fill(minimum_d.begin(), minimum_d.end(), 65536.0);
 
             if (rDepthFirstSearch(i,
-                                  adj_matrix,
-                                  X_label,
-                                  Y_label,
-                                  Y_match_index,
-                                  X_visited,
-                                  Y_visited,
-                                  minimum_d))
+                adj_matrix,
+                X_label,
+                Y_label,
+                Y_match_index,
+                X_visited,
+                Y_visited,
+                minimum_d))
             {
                 break;
             }
@@ -117,11 +109,7 @@ std::vector<int> KMatch(Eigen::MatrixXf _adj_matrix, int _type, float _disconnec
             }
 
             // 没有可增加的边
-<<<<<<< HEAD
-            if (std::abs(delta - 65536) < 1.0)
-=======
             if (std::abs(delta - 65536) < 1.0 || std::abs(delta) < 1e-3)
->>>>>>> 4cf00ca
             {
                 break;
             }
