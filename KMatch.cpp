@@ -51,7 +51,7 @@ std::vector<int> KMatch(Eigen::MatrixXf _adj_matrix, int _type, float _disconnec
     {
         float max_element = _adj_matrix.maxCoeff();
         _adj_matrix *= -1;
-        if (std::abs(max_element - _disconnect_value) < 0.01f)
+        if (std::abs(max_element - _disconnect_value) < 0.0001f)
         {
             _adj_matrix = _adj_matrix.array() + max_element;
         }
@@ -109,7 +109,7 @@ std::vector<int> KMatch(Eigen::MatrixXf _adj_matrix, int _type, float _disconnec
             }
 
             // 没有可增加的边
-            if (std::abs(delta - 65536) < 1.0 || std::abs(delta) < 1e-3)
+            if (std::abs(delta - 65536.0) < 1.0 || std::abs(delta) < 1e-3)
             {
                 break;
             }
