@@ -7,7 +7,7 @@ typedef enum {
 
 bool rDepthFirstSearch(const Mtype_e& _type,
     int _i,
-    Eigen::MatrixXf& _adj_matrix,
+    const Eigen::MatrixXf& _adj_matrix,
     std::vector<float>& _X_label,
     std::vector<float>& _Y_label,
     std::vector<int>& _Y_match_index,
@@ -171,4 +171,18 @@ std::vector<int> HungarianMatch(Eigen::MatrixXf _adj_matrix)
         }
     }
     return Y_match_index;
+}
+
+
+
+PYBIND11_MODULE(KMatch, m) {
+    m.def("KMatch", &KMatch,
+        pybind11::arg("_adj_matrix"),
+        pybind11::arg("_type"),
+        pybind11::arg("_disconnect_value"),
+        "KMatch");
+
+    m.def("HungarianMatch", &HungarianMatch,
+        pybind11::arg("_adj_matrix"),
+        "HungarianMatch");
 }

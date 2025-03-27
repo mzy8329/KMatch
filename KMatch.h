@@ -5,6 +5,8 @@
 #include <list>
 #include <eigen3/Eigen/Dense>
 #include <iostream>
+#include <pybind11_catkin/pybind11/pybind11.h>
+#include <pybind11_catkin/pybind11/eigen.h>
 
 #define REWARD 0
 #define LOSS 1
@@ -18,6 +20,6 @@
  */
 std::vector<int> KMatch(Eigen::MatrixXf _adj_matrix, int _type, float _disconnect_value);
 
-std::vector<int> HungarianMatch(Eigen::MatrixXf _adj_matrix, float _disconnect_value);
+std::vector<int> HungarianMatch(Eigen::MatrixXf _adj_matrix);
 
 #endif

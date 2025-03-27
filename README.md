@@ -6,3 +6,6 @@ KM匹配算法实现，匈牙利匹配方法的改进版（但比匈牙利算法
 
 # Hungarian
 匈牙利匹配算法实现
+
+python 版本编译指令
+c++ -O3 -Wall -shared -std=c++11 -fPIC $(python3 -m pybind11 --includes) KMatch.cpp -o KMatch$(python3-config --extension-suffix)
