@@ -146,7 +146,6 @@ std::vector<int> KMatch(Eigen::MatrixXf _adj_matrix, int _type, float _disconnec
     return Y_match_index;
 }
 
-
 std::vector<int> HungarianMatch(Eigen::MatrixXf _adj_matrix)
 {
     int size = std::max(_adj_matrix.rows(), _adj_matrix.cols());
