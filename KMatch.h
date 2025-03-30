@@ -7,6 +7,11 @@
 #include <iostream>
 #include <pybind11_catkin/pybind11/pybind11.h>
 #include <pybind11_catkin/pybind11/eigen.h>
+#include <pybind11_catkin/pybind11/stl.h>
+#include <pybind11_catkin/pybind11/functional.h>
+#include <pybind11_catkin/pybind11/chrono.h>
+#include <pybind11_catkin/pybind11/complex.h>
+
 
 #define REWARD 0
 #define LOSS 1
